@@ -1,0 +1,24 @@
+:root {
+
+  --font-family: "Roboto", sans-serif;
+  // --second-family: "TT Hoves Pro Trial", sans-serif;
+  // --third-family: "Roboto Medium", sans-serif;
+  --font3: "Unbounded", sans-serif;
+  // --font4: "TT Hoves Pro Trial Variable", sans-serif;
+
+  --content-width: 1384px;
+  --content-small-width: 1282px;
+  --container-offset: 30px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+  --container-small-width: calc(var(--content-small-width) + (var(--container-offset) * 2));
+
+  --sidebar-width: 200px;
+  --sidebar-gap: 125px;
+  --main-content: 830px;
+  // colors
+  --light-color: #fff;
+  --accent-color: #9476dd;;
+  --dark-color: #141024;
+  --text-colot: rgba(#141024, 0.7);
+
+}

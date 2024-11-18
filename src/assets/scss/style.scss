@@ -1,0 +1,34 @@
+// @import 'vendor/reset';
+@import 'blocks/vars';
+@import 'mixins';
+// @import "./vendor/animate";
+
+
+@import 'fonts';
+@import 'settings';
+
+
+html,body{
+  height: 100%;
+   margin: 0;
+   font-family: var(--font-family);
+}
+
+.main{
+  height: 100%;
+  flex: 1 0 auto; 
+}
+
+// ======blocks=========
+
+@import 'blocks/container';
+@import 'blocks/page';
+@import 'blocks/header';
+@import 'blocks/projects';
+@import 'blocks/footer';
+
+
+
+
+
+

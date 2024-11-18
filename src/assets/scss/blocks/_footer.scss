@@ -1,0 +1,34 @@
+.footer {
+    padding: 42px 0 30px;
+}
+
+.footer_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    & .flex-column {
+        & a {
+            font-family: var(--font3);
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 145%;
+            color: #fff;
+            display: block;
+        }
+
+        & small {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 124%;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 30px;
+        }
+    }
+}
+.footer_inner_logo{
+    display: block;
+    max-width: 116px;
+    max-height: 64px;
+}

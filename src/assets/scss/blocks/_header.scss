@@ -1,0 +1,140 @@
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 30px 0;
+}
+
+.header.--main {
+    min-height: 890px;
+    background-position: bottom;
+}
+
+.header_link {
+    border-radius: 99px;
+    padding: 17px 30px;
+    font-weight: 500;
+    font-size: 22px;
+    color: transparent;
+    transition: all 0.3s linear;
+    position: relative;
+    z-index: 2;
+
+    &::before {
+        content: "Заказать проект";
+        position: absolute;
+        font-weight: 500;
+        font-size: 22px;
+        color: #fff;
+        padding: 17px 30px;
+        inset: 0;
+        z-index: -1;
+        border-radius: 99px;
+        background: linear-gradient(134deg, #ffc71a 0%, #f8aa1a 100%);
+        box-shadow: 0 10px 60px 0 rgba(174, 113, 41, 0.4), 0 20px 60px 0 rgba(232, 205, 110, 0.1), inset 0 0 20px 0 rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(20px);
+        transition: all 0.3s linear;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: #fff;
+            background: linear-gradient(134deg, #ffc71a 0%, #f8aa1a 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 60px 0 rgba(174, 113, 41, 0.4), 0 20px 60px 0 rgba(232, 205, 110, 0.1), inset 0 0 20px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        &:hover::before {
+            opacity: 0;
+        }
+    }
+}
+
+.header_sidebar.--main {
+    padding-top: 364px;
+
+    & .header_menu {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+
+        & li {
+            position: relative;
+            z-index: 2;
+
+            &:has( a:hover) {
+                &::after {
+                    opacity: 0;
+                }
+            }
+
+            &::after {
+                position: absolute;
+                z-index: -1;
+                background: linear-gradient(180deg, #8066bd 0%, #6d49c2 100%);
+                inset: 0;
+                border-radius: 99px;
+                transition: all 0.3s linear;
+                content: '';
+                display: block;
+            }
+            
+            & a {
+                border: 3px solid transparent;
+                border-radius: 99px;
+                padding: 14px 54px;
+                font-weight: 500;
+                font-size: 22px;
+                color: #fff;
+                transition: all 0.3s linear;
+                display: block;
+
+                @media (hover:hover) {
+                    &:hover {
+                        color: var(--accent-color);
+                        background-color: transparent;
+                        border-color: var(--accent-color);
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.header_inner_bootom {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--sidebar-gap);
+}
+
+.header_content {
+    padding-top: 150px;
+    padding-bottom: 471px;
+
+    & h1 {
+        font-family: var(--font3);
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 115%;
+        letter-spacing: -0.01em;
+        color: #fff;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    & p {
+        margin: 0;
+        font-family: var(--font3);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 115%;
+        letter-spacing: -0.01em;
+        color: #fff;
+    }
+}
