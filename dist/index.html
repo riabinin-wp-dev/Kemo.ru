@@ -276,9 +276,40 @@
                     </a>
                 </div>
             </div>
-        </footer>
+        </footer>        <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+            <div class="modal-window" onclick="event.stopPropagation()">
+                <h2 class="modal_title">Напишите <br> нам</h2>
+                <button class="modal-close" onclick="closeModal(event)">
+                    <img src="./assets/images/modal/close.svg" alt="close" width="20" height="20" loading="lazy">
+                </button>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <span>
+                        <input type="text" class="input_style" id="name" name="name" placeholder="Ваше имя" required>
+                    </span>
+                    <span>
+                        <input type="email" class="input_style" id="email" name="email" placeholder="Почта" required>
+                    </span>
+                    <span>
+                        <input type="tel" class="input_style" id="phone" name="phone" placeholder="Телефон" required>
+                    </span>
+                    <span>
+                        <label for="comment" class="modal_comment">
+                            <textarea id="comment"class="input_style textarea_style"  name="comment" rows="3"></textarea>
+                        </label>
+                    </span>
+                    <span>
+                        <label for="file" class="file-label">
+                            <img src="./assets/images/modal/image76.png" alt="скрепка" width="22" height="20" loading="lazy">
+                            <span>Прикрепить файл:</span>
+                        </label>
+                        <input type="file" id="file" name="file" class="file-input">
+                    </span>
+                    <input type="submit" class="modal-submit disabled" value="Отправить" />
+                </form>
+            </div>
+        </div>
     </div>
-    <script src="assets/js/app.js"></script>
+    <!-- <script src="assets/js/app.js"></script> -->
 
     <script>
         //скрытие и отображение таксономий
@@ -294,6 +325,24 @@
                 parent.classList.add('active');
             }
         }
+        // модальное окно
+        function openModal() {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.add('active');
+            setTimeout(() => {
+                modalOverlay.classList.add('animation');
+            }, 300);
+        }
+
+        function closeModal(event) {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.remove('animation');
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+            }, 300);
+
+        }
+
 
         // переключение активных классов таксономий
         function changeActive(element) {
@@ -309,6 +358,56 @@
                 });
             });
         })
+        // псевдоэлемент на техтареа
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.getElementById('comment');
+            const modalComment = textarea.closest('.modal_comment');
+
+            function toggleFilledClass() {
+                if (textarea.value.trim() !== '') {
+                    modalComment.classList.add('filled');
+                } else {
+                    modalComment.classList.remove('filled');
+                }
+            }
+            toggleFilledClass();
+            textarea.addEventListener('input', toggleFilledClass);
+        });
+
+        //прикрепление файлов - вывод данных о файле
+        const fileInput = document.querySelector('.file-input');
+        const fileLabel = document.querySelector('.file-label');
+        const fileSpan = fileLabel.querySelector('span');
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileSpan.textContent = fileName;
+                fileLabel.classList.add('attached');
+            } else {
+                fileSpan.textContent = 'Прикрепить файл:';
+                fileLabel.classList.remove('attached');
+            }
+        });
+
+        //установить атрибут выключено на кнопку отправки формы
+        document.querySelectorAll('.modal-submit').forEach(element => {
+            element.classList.contains('disabled') ? element.setAttribute('disabled', '') : element.removeAttribute('disabled');
+        });
+        document.querySelectorAll('input[type="email"]').forEach(emailInput => {
+            emailInput.addEventListener('change', function () {
+                if (this.value.trim() !== '') {
+                    const form = this.closest('form');
+                    if (form) {
+                        const submitButton = form.querySelector('.modal-submit');
+                        if (submitButton) {
+                            submitButton.classList.remove('disabled');
+                            submitButton.removeAttribute('disabled');
+                        }
+                    }
+                }
+            });
+        });
 
 
     </script>

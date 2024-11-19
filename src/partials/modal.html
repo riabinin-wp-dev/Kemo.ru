@@ -2,31 +2,31 @@
     <div class="modal-window" onclick="event.stopPropagation()">
         <h2 class="modal_title">Напишите <br> нам</h2>
         <button class="modal-close" onclick="closeModal(event)">
-            <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.02 21.6074L7.97646 7.2036" stroke="black" stroke-width="2" stroke-linecap="round" />
-                <path d="M22.2886 7.47559L7.70807 21.3356" stroke="black" stroke-width="2" stroke-linecap="round" />
-            </svg>
+            <img src="./assets/images/modal/close.svg" alt="close" width="20" height="20" loading="lazy">
         </button>
         <form action="#" method="post" enctype="multipart/form-data">
             <span>
-                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                <input type="text" class="input_style" id="name" name="name" placeholder="Ваше имя" required>
             </span>
             <span>
-                <input type="email" id="email" name="email" placeholder="Почта" required>
+                <input type="email" class="input_style" id="email" name="email" placeholder="Почта" required>
             </span>
             <span>
-                <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
+                <input type="tel" class="input_style" id="phone" name="phone" placeholder="Телефон" required>
             </span>
             <span>
-                <textarea id="comment" name="comment" rows="3" placeholder="Комментарий"></textarea>
+                <label for="comment" class="modal_comment">
+                    <textarea id="comment"class="input_style textarea_style"  name="comment" rows="3"></textarea>
+                </label>
             </span>
             <span>
-                <label for="file">
-                    <img src="./assets/images/modal/image76.png" alt="скрепка" width="22" height="20">
-                    Прикрепить файл:</label>
-                <input type="file" id="file" name="file">
+                <label for="file" class="file-label">
+                    <img src="./assets/images/modal/image76.png" alt="скрепка" width="22" height="20" loading="lazy">
+                    <span>Прикрепить файл:</span>
+                </label>
+                <input type="file" id="file" name="file" class="file-input">
             </span>
-            <input type="submit" class="modal-submit" value="Отправить" />
+            <input type="submit" class="modal-submit disabled" value="Отправить" />
         </form>
     </div>
 </div>
