@@ -3,31 +3,39 @@
     justify-content: space-between;
     align-items: center;
     gap: 40px;
-    padding: 30px 0;
+    padding: var(--size30) 0;
+}
+
+.header_logo{
+    & img{
+        width: 7vw;
+        height: 6vw;
+    }
 }
 
 .header.--main {
-    min-height: 890px;
+    min-height: 63.5vw;
     background-position: bottom;
 }
 
 .header_link {
-    border-radius: 99px;
-    padding: 17px 30px;
+    border-radius: 7vw;
+    padding: var(--size15) var(--size30);
     font-weight: 500;
-    font-size: 22px;
+    font-size: var(--size22);
     color: transparent;
     transition: all 0.3s linear;
     position: relative;
     z-index: 2;
+    border: 0.19vw solid transparent;
 
     &::before {
         content: "Заказать проект";
         position: absolute;
         font-weight: 500;
-        font-size: 22px;
+        font-size: var(--size22);
         color: #fff;
-        padding: 17px 30px;
+        padding: var(--size15) var(--size30);
         inset: 0;
         z-index: -1;
         border-radius: 99px;
@@ -40,11 +48,7 @@
     @media (hover: hover) {
         &:hover {
             color: #fff;
-            background: linear-gradient(134deg, #ffc71a 0%, #f8aa1a 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            backdrop-filter: blur(20px);
+            border-color: #f8aa1a;
             box-shadow: 0 10px 60px 0 rgba(174, 113, 41, 0.4), 0 20px 60px 0 rgba(232, 205, 110, 0.1), inset 0 0 20px 0 rgba(255, 255, 255, 0.4);
         }
 
@@ -55,7 +59,7 @@
 }
 
 .header_sidebar.--main {
-    padding-top: 364px;
+    padding-top: 26vw;
 
     & .header_menu {
         display: flex;

@@ -6,9 +6,9 @@
   --font3: "Unbounded", sans-serif;
   // --font4: "TT Hoves Pro Trial Variable", sans-serif;
 
-  --content-width: 1384px;
+  --content-width: 99vw;
   --content-small-width: 1282px;
-  --container-offset: 30px;
+  --container-offset: 2.1vw;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
   --container-small-width: calc(var(--content-small-width) + (var(--container-offset) * 2));
 
@@ -20,5 +20,9 @@
   --accent-color: #9476dd;;
   --dark-color: #141024;
   --text-colot: rgba(#141024, 0.7);
+
+  --size22: 1.6vw;
+  --size15: 1.1vw;
+  --size30: 2.2vw;
 
 }
