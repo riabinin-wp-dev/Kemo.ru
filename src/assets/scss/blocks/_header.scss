@@ -19,7 +19,7 @@
 }
 
 .header_link {
-    border-radius: 7vw;
+    border-radius: var(--size99);
     padding: var(--size15) var(--size30);
     font-weight: 500;
     font-size: var(--size22);
@@ -64,12 +64,24 @@
     & .header_menu {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: var(--size15);
 
 
         & li {
             position: relative;
             z-index: 2;
+
+            &.current-menu-item{
+                &::after {
+                    opacity: 0;
+                }
+                
+                & a{
+                    color: var(--accent-color);
+                    background-color: transparent;
+                    border-color: var(--accent-color);
+                }
+            }
 
             &:has( a:hover) {
                 &::after {
@@ -82,18 +94,18 @@
                 z-index: -1;
                 background: linear-gradient(180deg, #8066bd 0%, #6d49c2 100%);
                 inset: 0;
-                border-radius: 99px;
+                border-radius: var(--size99);
                 transition: all 0.3s linear;
                 content: '';
                 display: block;
             }
             
             & a {
-                border: 3px solid transparent;
-                border-radius: 99px;
-                padding: 14px 54px;
+                border: 0.1vw solid transparent;
+                border-radius: var(--size99);
+                padding: var(--size15) var(--size52);
                 font-weight: 500;
-                font-size: 22px;
+                font-size: var(--size22);
                 color: #fff;
                 transition: all 0.3s linear;
                 display: block;
@@ -118,25 +130,25 @@
 }
 
 .header_content {
-    padding-top: 150px;
-    padding-bottom: 471px;
+    padding-top: var(--size150);
+    padding-bottom: 33.8vw;
 
     & h1 {
         font-family: var(--font3);
         font-weight: 500;
-        font-size: 32px;
+        font-size: var(--size32);
         line-height: 115%;
         letter-spacing: -0.01em;
         color: #fff;
         margin: 0;
-        margin-bottom: 20px;
+        margin-bottom: var(--size22);
     }
 
     & p {
         margin: 0;
         font-family: var(--font3);
         font-weight: 300;
-        font-size: 16px;
+        font-size: var(--size16);
         line-height: 115%;
         letter-spacing: -0.01em;
         color: #fff;

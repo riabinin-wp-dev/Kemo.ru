@@ -16,6 +16,39 @@
 
     </div>
     <script src="assets/js/app.js"></script>
-</body>
-</html>
 
+    <script>
+        //скрытие и отображение таксономий
+        function showTaxonomy(e) {
+            const parent = e.closest('[data-taxonomy]'); // Ищем родительский элемент
+            if (parent.classList.contains('active')) {
+                // Закрываем элемент
+                parent.style.maxHeight = null;
+                parent.classList.remove('active');
+            } else {
+                // Открываем элемент
+                parent.style.maxHeight = parent.scrollHeight + 'px';
+                parent.classList.add('active');
+            }
+        }
+
+        // переключение активных классов таксономий
+        function changeActive(element) {
+            const parent = element.parentNode;
+            parent.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-taxonomy] a').forEach(element => {
+                element.addEventListener('click', (event) => {
+                    event.preventDefault();
+                });
+            });
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -30,7 +30,7 @@
                     <a href="/" class="header_logo">
                         <img src="./assets/images/header/logo.svg" alt="logo" width="99" height="84">
                     </a>
-                    <a href="" class="header_link">Заказать проект</a>
+                    <a href="javascript:void(0);" class="header_link" onclick="openModal()">Заказать проект</a>
                 </div>
                 <div class="header_inner_bootom">
                     <sidebar class="header_sidebar --main">
@@ -60,20 +60,20 @@
                         <div class="project_sidebar"></div>
                         <div class="project_main">
                             <h2 class="project_title">Проекты</h2>
-                            <ul class="list-reset project_taxonomy">
-                                <li class="project_all"><a href="">Все</a></li>
-                                <li><a href="">Игры</a></li>
-                                <li><a href="">Сайты</a></li>
-                                <li><a href="">Платежи</a></li>
-                                <li><a href="">Персональное видео</a></li>
-                                <li class="project_show" data-show>
+                            <ul class="list-reset project_taxonomy" data-taxonomy>
+                                <li class="project_all active" onclick="changeActive(this)"><a href="">Все</a></li>
+                                <li onclick="changeActive(this)"><a href="">Игры</a></li>
+                                <li onclick="changeActive(this)"><a href="">Сайты</a></li>
+                                <li onclick="changeActive(this)"><a href="">Платежи</a></li>
+                                <li onclick="changeActive(this)"><a href="">Персональное видео</a></li>
+                                <li class="project_show" onclick="showTaxonomy(this)">
                                     <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 1L7 8L13 1" stroke="white" stroke-width="2" />
                                     </svg>
                                 </li>
-                                <li><a href="">смс-акции</a></li>
-                                <li><a href="">остальное</a></li>
-                                <li><a href="">подарочные карты</a></li>
+                                <li onclick="changeActive(this)"><a href="">Смс-акции</a></li>
+                                <li onclick="changeActive(this)"><a href="">Остальное</a></li>
+                                <li onclick="changeActive(this)"><a href="">Подарочные карты</a></li>
                             </ul>
                             <div class="project_content">
                                 <article>
@@ -279,6 +279,39 @@
         </footer>
     </div>
     <script src="assets/js/app.js"></script>
-</body>
-</html>
 
+    <script>
+        //скрытие и отображение таксономий
+        function showTaxonomy(e) {
+            const parent = e.closest('[data-taxonomy]'); // Ищем родительский элемент
+            if (parent.classList.contains('active')) {
+                // Закрываем элемент
+                parent.style.maxHeight = null;
+                parent.classList.remove('active');
+            } else {
+                // Открываем элемент
+                parent.style.maxHeight = parent.scrollHeight + 'px';
+                parent.classList.add('active');
+            }
+        }
+
+        // переключение активных классов таксономий
+        function changeActive(element) {
+            const parent = element.parentNode;
+            parent.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-taxonomy] a').forEach(element => {
+                element.addEventListener('click', (event) => {
+                    event.preventDefault();
+                });
+            });
+        })
+
+
+    </script>
+</body>
+
+</html>

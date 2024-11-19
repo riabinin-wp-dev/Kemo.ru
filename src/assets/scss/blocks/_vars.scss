@@ -7,22 +7,43 @@
   // --font4: "TT Hoves Pro Trial Variable", sans-serif;
 
   --content-width: 99vw;
-  --content-small-width: 1282px;
+  --content-small-width: 91.5vw;
   --container-offset: 2.1vw;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
   --container-small-width: calc(var(--content-small-width) + (var(--container-offset) * 2));
 
-  --sidebar-width: 200px;
-  --sidebar-gap: 125px;
-  --main-content: 830px;
+  --sidebar-width: 14.4vw;
+  --sidebar-gap: 8.9vw;
+  --main-content: 59.3vw;
   // colors
   --light-color: #fff;
   --accent-color: #9476dd;;
   --dark-color: #141024;
   --text-colot: rgba(#141024, 0.7);
 
-  --size22: 1.6vw;
+  --size6: 0.5vw;
+  --size8: 0.6vw;
+  --size10: 0.7vw;
+  --size12: 0.85vw;
   --size15: 1.1vw;
+  --size16: 1.15vw;
+  --size18: 1.3vw;
+  --size20: 1.45vw;
+  --size22: 1.6vw;
+  --size25: 1.84vw;
   --size30: 2.2vw;
-
+  --size32: 2.35vw;
+  --size40: 2.9vw;
+  --size42: 3vw;
+  --size46: 3.3vw;
+  --size50: 3.61vw;
+  --size52: 3.7vw;
+  --size64: 4.6vw;
+  --size68: 4.9vw;
+  --size99: 7vw;
+  --size114: 8.15vw;
+  --size150: 10.9vw;
+  --size358: 25.6vw;
+  --size405: 28.93vw;
+  --size434: 31vw;
 }

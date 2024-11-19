@@ -1,18 +1,18 @@
 .footer {
-    padding: 42px 0 30px;
+    padding: var(--size42) 0 var(--size30);
 }
 
 .footer_inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: var(--size10);
 
     & .flex-column {
         & a {
             font-family: var(--font3);
             font-weight: 400;
-            font-size: 20px;
+            font-size: var(--size20);
             line-height: 145%;
             color: #fff;
             display: block;
@@ -20,16 +20,16 @@
 
         & small {
             font-weight: 400;
-            font-size: 12px;
+            font-size: var(--size12);
             line-height: 124%;
             color: rgba(255, 255, 255, 0.5);
-            margin-top: 30px;
+            margin-top: var(--size30);
             display: block;
         }
     }
 }
-.footer_inner_logo{
+.footer_inner_logo img{
     display: block;
-    max-width: 116px;
-    max-height: 64px;
+    width: var(--size114);
+    max-height: var(--size64);
 }

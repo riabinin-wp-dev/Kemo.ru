@@ -1,0 +1,32 @@
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+        <h2 class="modal_title">Напишите <br> нам</h2>
+        <button class="modal-close" onclick="closeModal(event)">
+            <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.02 21.6074L7.97646 7.2036" stroke="black" stroke-width="2" stroke-linecap="round" />
+                <path d="M22.2886 7.47559L7.70807 21.3356" stroke="black" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <span>
+                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+            </span>
+            <span>
+                <input type="email" id="email" name="email" placeholder="Почта" required>
+            </span>
+            <span>
+                <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
+            </span>
+            <span>
+                <textarea id="comment" name="comment" rows="3" placeholder="Комментарий"></textarea>
+            </span>
+            <span>
+                <label for="file">
+                    <img src="./assets/images/modal/image76.png" alt="скрепка" width="22" height="20">
+                    Прикрепить файл:</label>
+                <input type="file" id="file" name="file">
+            </span>
+            <input type="submit" class="modal-submit" value="Отправить" />
+        </form>
+    </div>
+</div>
