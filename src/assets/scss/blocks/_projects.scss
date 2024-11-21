@@ -1,8 +1,16 @@
 .project {
-    margin-top: - var(--size99);
+    margin-top: calc(0 - var(--size99));
+
+    @include mobile {
+        margin-top: -40px;
+    }
 
     & .project_title {
         margin-bottom: var(--size25);
+
+        @include mobile {
+            margin-bottom: 16px;
+        }
     }
 
 }
@@ -11,14 +19,36 @@
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     gap: var(--sidebar-gap);
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.project_sidebar {
+    @include mobile {
+        display: none;
+    }
 }
 
 .project_main {
     max-width: var(--main-content);
 
+    @include mobile {
+        max-width: none;
+    }
+
     &:has(.project_taxonomy.active) {
         & .project_show~li {
             opacity: 1;
+        }
+    }
+
+    @include mobile {
+        &:has(.project_taxonomy.active) {
+            & li:nth-child(3)~li {
+                opacity: 1;
+            }
         }
     }
 }
@@ -28,13 +58,28 @@
     flex-wrap: wrap;
     gap: var(--size10);
     margin-bottom: var(--size40);
-    max-height: 3.2vw;
+    max-height: 3.5vw;
     overflow: hidden;
     transition: all 0.3s linear;
+
+    @include mobile {
+        gap: 5px;
+        max-height: 60px;
+        // max-width: 400px;
+    }
 
     &.active {
         & .project_show svg {
             transform: rotate(180deg);
+        }
+
+        & .project_show {
+            background-color: transparent;
+            border-color: #8b86cd !important;
+
+            & svg path {
+                stroke: black;
+            }
         }
     }
 
@@ -48,12 +93,62 @@
         transition: all 0.3s linear;
         border: 0.2vw solid transparent;
 
+        &:not(.project_all),
+        &:not(.project_all) {
+            flex-grow: 1;
+        }
+
+        @include mobile {
+            margin-bottom: 15px;
+            border-width: 3px !important;
+
+            &:nth-child(1) {
+                order: 0;
+            }
+
+            &:nth-child(2) {
+                order: 1;
+            }
+
+            &:nth-child(3) {
+                order: 2;
+
+                &~li {
+                    opacity: 0;
+                }
+            }
+
+            &.project_show {
+                order: 3;
+            }
+
+            &:nth-child(4) {
+                order: 4;
+            }
+
+            &:nth-child(5) {
+                order: 5;
+            }
+
+            &:nth-child(7) {
+                order: 6;
+            }
+
+            &:nth-child(8) {
+                order: 8;
+            }
+
+            &:nth-child(9) {
+                order: 7;
+            }
+        }
+
         &.active {
             background: transparent;
             color: #000;
             border: 0.2vw solid #8b86cd;
 
-            & a{
+            & a {
                 color: inherit;
             }
         }
@@ -104,6 +199,15 @@
             box-shadow: 0 3px 12px 0 rgba(37, 25, 53, 0.15);
             padding: var(--size10) var(--size25);
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include mobile {
+                opacity: 1 !important;
+                padding: 16px 25px;
+                flex-grow: 0;
+            }
 
             & path {
                 transition: all 0.3s linear;
@@ -112,6 +216,13 @@
             & svg {
                 transform: rotate(0);
                 transition: all 0.3s linear;
+                width: var(--size14);
+                height: var(--size10);
+
+                @include mobile {
+                    width: 12px;
+                    height: 7px;
+                }
             }
 
             @media (hover:hover) {
@@ -124,7 +235,6 @@
 
             &~li {
                 opacity: 0;
-                // margin-top: -100%;
             }
         }
     }
@@ -138,6 +248,12 @@
         line-height: 115%;
         color: #fff;
         transition: all 0.3s linear;
+
+        @include mobile {
+            padding: 10px 21px;
+            font-size: 18px;
+            text-align: center;
+        }
     }
 }
 
@@ -146,10 +262,18 @@
     flex-direction: column;
     gap: var(--size50);
 
+    @include mobile{
+        gap: 33px;
+    }
+
     & article {
         display: flex;
         flex-direction: column;
         gap: var(--size20);
+
+        @include mobile{
+            gap: 16px;
+        }
 
         & h3,
         & p {
@@ -170,6 +294,13 @@
         border-radius: var(--size25);
         width: var(--main-content);
         height: var(--size434);
+
+        @include mobile {
+            border-radius: 15px;
+            width: 100%;
+            height: auto;
+            // max-height: 186px;
+        }
     }
 
     & article span {
@@ -177,9 +308,15 @@
         font-size: var(--size16);
         line-height: 115%;
         color: #737373;
-        border-radius:var(--size6);
+        border-radius: var(--size6);
         padding: 0.2vw var(--size10);
         background: #fff;
+
+        @include mobile {
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
     }
 
     & article .content_wrap {
@@ -190,11 +327,22 @@
         display: flex;
         align-items: center;
         gap: var(--size6);
+
+        @include mobile {
+            top: 17px;
+            left: 17px;
+            gap: 4px;
+        }
     }
 
     & article .grid-row {
         grid-template-columns: 1fr var(--size114);
         gap: var(--size50);
+
+        @include mobile {
+            grid-template-columns: 1fr 113px;
+            gap: 10px;
+        }
 
         & a {
             display: flex;
@@ -206,8 +354,28 @@
             padding: var(--size12) var(--size16);
             max-width: var(--size114);
             max-height: 3.3vw;
+
+            @include mobile {
+                border-radius: 10px;
+                max-width: 113px;
+                max-height: 46px;
+                padding: 12px 20px;
+            }
         }
     }
+}
+
+@include mobile{
+    .project_content_text .truncate {
+        font-size: 18px;
+        line-height: 1.5; /* Регулирует высоту строки */
+        max-height: 2.8em; /* Высота для двух строк */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; /* Ограничивает количество строк */
+      }
 }
 
 .project_content_text {
@@ -217,6 +385,10 @@
         font-size: var(--size22);
         line-height: 115%;
         color: #000;
+
+        @include mobile {
+            font-size: 18px;
+        }
     }
 
     & p {
@@ -224,15 +396,35 @@
         font-size: var(--size22);
         line-height: 115%;
         color: #000;
+
+        @include mobile {
+            font-size: 18px;
+            position: relative;
+
+            &::after {
+                content: "..";
+                position: absolute;
+                bottom: 0;
+                right: -10px;
+                // background: white; /* Задайте цвет фона, совпадающий с фоном контейнера */
+                // padding-left: 5px; /* Регулируйте, чтобы сохранить расстояние */
+              }
+        }
     }
 }
 
 .project_link_bank {
     & img {
         display: block;
-        max-width: calc( var(--size10 ) * 2  + 0.5) !important;
+        max-width: calc(var(--size10) * 2 + 0.5) !important;
         max-height: var(--size40) !important;
         object-fit: contain !important;
+
+        @include mobile {
+            width: 100%;
+            max-width: 114px !important;
+            max-height: 46px !important;
+        }
     }
 }
 
@@ -242,6 +434,11 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--size20);
 
+    @include mobile{
+        margin-top: 30px;
+        gap: 9px;
+    }
+
     & a {
         display: block;
         position: relative;
@@ -250,6 +447,12 @@
             border-radius: var(--size6);
             height: var(--size358);
             width: var(--size405);
+
+            @include mobile{
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+            }
         }
 
         & .content_wrap {
@@ -258,6 +461,12 @@
             top: var(--size20);
             display: flex;
             gap: var(--size6);
+
+            @include mobile{
+                left: 11px;
+                top: 11px;
+                gap: 3px;
+            }
         }
     }
 
@@ -269,5 +478,11 @@
         border-radius: var(--size6);
         padding: 0.2vw var(--size10);
         background: #fff;
+
+        @include mobile{
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
     }
 }

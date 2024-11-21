@@ -7,6 +7,10 @@
     @include tablet{
         padding: 0 15px;
     }
+
+    @include mobile{
+        padding: 0 8px;
+    }
 }
 .container-small{
     max-width: var(--container-small-width);

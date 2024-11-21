@@ -116,6 +116,32 @@
             });
         });
 
+        // бургер
+        const burger = document.querySelector('.burger');
+
+        burger.addEventListener('click', function () {
+            if (!this.classList.contains('active')) {
+                // Начинаем со сведения полосок
+                this.classList.add('active');
+                setTimeout(() => {
+                    // Добавляем финальное состояние крестика
+                    this.classList.add('cross');
+                }, 200); // Длительность совпадает с CSS transition
+            } else {
+                // Возвращаемся в изначальное состояние
+                this.classList.remove('cross');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 200); // Длительность совпадает с CSS transition
+            }
+        });
+
+        // для определения скролла для css
+        const body = document.body;
+        const inner = document.querySelector('.container'); // или другой элемент, в котором нужно вычислить ширину
+        const scrollBarWidth = window.innerWidth - body.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
+
 
     </script>
 </body>

@@ -32,6 +32,16 @@
                     </a>
                     <a href="javascript:void(0);" class="header_link" onclick="openModal()">Заказать проект</a>
                 </div>
+                <div class="header_mobile">
+                    <a href="" class="mobile_logo">
+                        <img src="./assets/images/header/Mobile_logo.svg" alt="logo" width="93" height="52">
+                    </a>
+                    <div class="burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                </div>
                 <div class="header_inner_bootom">
                     <sidebar class="header_sidebar --main">
                          <nav>
@@ -48,7 +58,16 @@
                             <p>But you can save the world by <br> ordering a project from us!</p>
                     </div>
                 </div>
-        
+                <div class="header_menu_mobile" style="background-image: url(./assets/images/header/Airbrush-Image-Enhancer.png);">
+                    <nav id="menu_mobile">
+                        <ul class="header_menu--mobile list-reset">
+                            <li class="current-menu-item"><a href="">Проекты</a></li>
+                            <li><a href="">Клиенты</a></li>
+                            <li><a href="">Контакты</a></li>
+                            <li><a href="javascript:void(0);" onclick="openModal()">Заказать проект</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
         <main class="main">
@@ -87,9 +106,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>Капибара.</h3>
-                                            <p>Игра, где его персонаж преодолевает
-                                                преграды, собирает защитные предметы, зарабатывает баллы</p>
+                                            <div class="truncate">
+                                                <h3>Капибара.</h3>
+                                                <p>Игра, где его персонаж преодолевает
+                                                    преграды, собирает защитные предметы, зарабатывает баллы</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -110,9 +131,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>CAT-MAN.</h3>
-                                            <p>Игра в корпоративной стилистике разработана
-                                                для мероприятия сотрудников российского офиса Google</p>
+                                            <div class="truncate">
+                                                <h3>CAT-MAN.</h3>
+                                                <p>Игра в корпоративной стилистике разработана
+                                                    для мероприятия сотрудников российского офиса Google</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -133,9 +156,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>Герои.</h3>
-                                            <p>Многопользовательская игра-квест, в которой
-                                                участники отвечают на вопросы, чтобы захватывать территории</p>
+                                            <div class="truncate">
+                                                <h3>Герои.</h3>
+                                                <p>Многопользовательская игра-квест, в которой
+                                                    участники отвечают на вопросы, чтобы захватывать территории</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -156,9 +181,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>Космическая одиссея кота.</h3>
-                                            <p>Игра, в стиле игры
-                                                космический захватчик, для онлайн-конференции по кибербезопасности</p>
+                                            <div class="truncate">
+                                                <h3>Космическая одиссея кота.</h3>
+                                                <p>Игра, в стиле игры
+                                                    космический захватчик, для онлайн-конференции по кибербезопасности</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -179,9 +206,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>Полей цветок.</h3>
-                                            <p>Популяризация стратегической
-                                                трансформации PepsiСo Positive (pep+)</p>
+                                            <div class="truncate">
+                                                <h3>Полей цветок.</h3>
+                                                <p>Популяризация стратегической
+                                                    трансформации PepsiСo Positive (pep+)</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -202,9 +231,11 @@
                                     </a>
                                     <div class="grid-row">
                                         <div class="project_content_text">
-                                            <h3>Виртуальный магазин МагнИТ.</h3>
-                                            <p>Привлечение тех
-                                                специалистов на стенд компании на IT-мероприятиях</p>
+                                            <div class="truncate">
+                                                <h3>Виртуальный магазин МагнИТ.</h3>
+                                                <p>Привлечение тех
+                                                    специалистов на стенд компании на IT-мероприятиях</p>
+                                            </div>
                                         </div>
                                         <div class="project_link_bank">
                                             <a href="">
@@ -408,6 +439,32 @@
                 }
             });
         });
+
+        // бургер
+        const burger = document.querySelector('.burger');
+
+        burger.addEventListener('click', function () {
+            if (!this.classList.contains('active')) {
+                // Начинаем со сведения полосок
+                this.classList.add('active');
+                setTimeout(() => {
+                    // Добавляем финальное состояние крестика
+                    this.classList.add('cross');
+                }, 200); // Длительность совпадает с CSS transition
+            } else {
+                // Возвращаемся в изначальное состояние
+                this.classList.remove('cross');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 200); // Длительность совпадает с CSS transition
+            }
+        });
+
+        // для определения скролла для css
+        const body = document.body;
+        const inner = document.querySelector('.container'); // или другой элемент, в котором нужно вычислить ширину
+        const scrollBarWidth = window.innerWidth - body.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
 
 
     </script>

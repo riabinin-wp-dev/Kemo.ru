@@ -26,6 +26,13 @@
     overflow: hidden;
     transform: scale(0.8);
     transition: transform 0.3s ease;
+
+    @include mobile{
+        padding: 26px 33px;
+        width: 100%;
+        max-width: 350px;
+        border-radius: 30px;
+    }
 }
 
 .modal_title {
@@ -37,11 +44,20 @@
     letter-spacing: -0.01em;
     color: #000;
     margin-bottom: var(--size30);
+
+    @include mobile{
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
 }
 
 .modal-window form>span {
     display: block;
     margin-bottom: var(--size10);
+
+    @include mobile{
+        margin-bottom: 10px;
+    }
 
     &:has(.wpcf7-not-valid-tip) {
         & .input_style {
@@ -53,7 +69,11 @@
 label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: var(--size6);
+
+    @include mobile{
+        margin-bottom: 5px;
+    }
 }
 
 .input_style {
@@ -68,6 +88,13 @@ label {
     line-height: 115%;
     color: #000;
     text-align: center;
+
+    @include mobile{
+        border-radius: 99px;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-width: 2px;
+    }
 
 
     &::placeholder {
@@ -86,6 +113,11 @@ label {
     margin-top: var(--size20);
     width: 100%;
 
+    @include mobile{
+        border-radius: 23px;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
 }
 
 .modal_comment {
@@ -112,6 +144,10 @@ label {
         text-align: center;
         transition: all 0.3s linear;
         pointer-events: none;
+
+        @include mobile{
+            font-size: 20px;
+        }
     }
 
     &.filled::after {
@@ -135,10 +171,23 @@ label {
     justify-content: center;
     transition: border 0.3s linear;
 
+    @include mobile{
+        top: 26px;
+        right: 33px;
+        width: 42px;
+        height: 42px;
+        border-width: 2px;
+    }
+
     & img {
         width: var(--size20);
         height: var(--size20);
         transition: all 0.3s linear;
+
+        @include mobile{
+            width: 30px;
+            height: 29px;
+        }
     }
 
     @media (hover: hover) {
@@ -172,13 +221,12 @@ label {
     color: #fff;
     cursor: pointer;
 
-    // @media (hover: hover) {
-    //     &:hover {
-    //         color: #fff;
-    //         border-color: #f8aa1a;
-    //         box-shadow: 0 10px 60px 0 rgba(174, 113, 41, 0.4), 0 20px 60px 0 rgba(232, 205, 110, 0.1), inset 0 0 20px 0 rgba(255, 255, 255, 0.4);
-    //     }
-    // }
+    @include mobile{
+        font-size: 22px;
+        border-radius: 99px;
+        padding: 17px 15px;
+        margin-top: 40px;
+    }
 
     &.disabled {
         cursor: not-allowed;
@@ -216,6 +264,18 @@ label {
     border: 0.2vw solid #8b86cd;
     border-radius: var(--size99);
     padding: var(--size10) var(--size28);
+
+    @include mobile{
+        gap: 10px;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-width: 2px;
+    }
+
+    & img{
+        width: 22px;
+        height: 20px;
+    }
 
     & span.attached {
         color: #8066bd;

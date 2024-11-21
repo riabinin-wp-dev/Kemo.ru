@@ -1,5 +1,10 @@
 .footer {
     padding: var(--size42) 0 var(--size30);
+
+    @include mobile{
+        padding-top: 38px;
+        padding-bottom: 24px;
+    }
 }
 
 .footer_inner {
@@ -7,6 +12,12 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--size10);
+
+    @include mobile{
+        gap: 20px;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
 
     & .flex-column {
         & a {
@@ -16,6 +27,11 @@
             line-height: 145%;
             color: #fff;
             display: block;
+
+            @include mobile{
+                text-align: center;
+                font-size: 20px;
+            }
         }
 
         & small {
@@ -25,6 +41,12 @@
             color: rgba(255, 255, 255, 0.5);
             margin-top: var(--size30);
             display: block;
+
+            @include mobile{
+                font-size: 12px;
+                margin-top: 20px;
+                text-align: center;
+            }
         }
     }
 }
@@ -32,4 +54,10 @@
     display: block;
     width: var(--size114);
     max-height: var(--size64);
+
+    @include mobile{
+        width: 100%;
+        max-width: 116px;
+        max-height: 65px;
+    }
 }
