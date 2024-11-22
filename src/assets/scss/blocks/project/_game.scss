@@ -9,7 +9,7 @@
     }
 }
 
-.game_left{
+.game_left {
     padding-bottom: var(--size52);
 }
 
@@ -158,6 +158,12 @@
 
         & a {
             margin-bottom: var(--size40);
+
+            & img {
+                width: var(--size200);
+                height: var(--size120);
+                border-radius: var(--size15);
+            }
         }
     }
 
@@ -175,6 +181,7 @@
         align-items: center;
         gap: 0.3vw;
     }
+
     & .load_more {
         margin-top: 0;
         margin-bottom: var(--size52);
@@ -188,5 +195,11 @@
 
     & a {
         margin-bottom: var(--size40);
+
+        & img {
+            width: var(--size200);
+            height: var(--size120);
+            border-radius: var(--size15);
+        }
     }
 }
