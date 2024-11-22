@@ -50,17 +50,17 @@ a {
   margin: 0;
   font-family: var(--font3);
   font-weight: 500;
-  font-size: clamp(var(--size52), 5vw , var(--size68));
+  font-size: clamp(var(--size52), 5vw, var(--size68));
   line-height: 115%;
   letter-spacing: -0.01em;
   color: #1f1f1f;
 
-  @include mobile{
+  @include mobile {
     font-size: 54px;
   }
 }
 
-.grid-row{
+.grid-row {
   display: grid;
 }
 
@@ -78,7 +78,7 @@ a {
   background: transparent;
   position: relative;
 
-  @include mobile{
+  @include mobile {
     margin: 38px auto;
     border-radius: 99px;
     padding: 17px 43px;
@@ -86,25 +86,61 @@ a {
   }
 
   @media (hover:hover) {
-      &:hover {
-          color: var(--accent-color);
-          background-color: transparent;
-          border-color: var(--accent-color);
+    &:hover {
+      color: var(--accent-color);
+      background-color: transparent;
+      border-color: var(--accent-color);
 
-          &::after {
-              opacity: 0;
-          }
+      &::after {
+        opacity: 0;
       }
+    }
   }
 
   &::after {
-      position: absolute;
-      z-index: -1;
-      background: linear-gradient(180deg, #8066bd 0%, #6d49c2 100%);
-      inset: 0;
-      border-radius: var(--size99);
-      transition: all 0.3s linear;
-      content: '';
-      display: block;
+    position: absolute;
+    z-index: -1;
+    background: linear-gradient(180deg, #8066bd 0%, #6d49c2 100%);
+    inset: 0;
+    border-radius: var(--size99);
+    transition: all 0.3s linear;
+    content: '';
+    display: block;
+  }
+}
+
+.section.--sidebar .container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--sidebar-gap);
+
+  & .header_sidebar.--main {
+    padding-top: 0;
+  }
+
+  & .header_inner_bootom {
+    position: sticky;
+    top: var(--size30);
+  }
+}
+
+.header_sidebar_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: var(--size30);
+  line-height: 115%;
+  color: #000;
+  border: 0.2vw solid rgba(78, 70, 166, 0.8);
+  border-radius: var(--size99);
+  padding: var(--size15) var(--size28);
+  margin-bottom: 24vw;
+  max-width: max-content;
+
+  & img {
+    width: var(--size25);
+    height: var(--size20);
+    object-fit: contain;
   }
 }

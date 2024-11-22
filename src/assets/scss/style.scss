@@ -26,6 +26,12 @@ html,body{
 @import 'blocks/header';
 @import 'blocks/projects';
 @import 'blocks/modal';
+
+// страница проекта
+@import 'blocks/project/game';
+@import "../../../node_modules/swiper/swiper-bundle.min";
+
+
 @import 'blocks/footer';
 
 

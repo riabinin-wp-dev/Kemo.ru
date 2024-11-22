@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {{> head }}
+</head>
+
+<body>
+    <div class="page">
+        {{> header-small }}
+
+        <main class="main">
+            {{> body }}
+        </main>
+        {{> footer }}
+        {{> modal }}
+
+    </div>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        // модальное окно
+        function openModal() {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.add('active');
+            setTimeout(() => {
+                modalOverlay.classList.add('animation');
+            }, 300);
+        }
+
+        function closeModal(event) {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.remove('animation');
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+            }, 300);
+
+        }
+
+        // псевдоэлемент на техтареа
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.getElementById('comment');
+            const modalComment = textarea.closest('.modal_comment');
+
+            function toggleFilledClass() {
+                if (textarea.value.trim() !== '') {
+                    modalComment.classList.add('filled');
+                } else {
+                    modalComment.classList.remove('filled');
+                }
+            }
+            toggleFilledClass();
+            textarea.addEventListener('input', toggleFilledClass);
+        });
+
+        //прикрепление файлов - вывод данных о файле
+        const fileInput = document.querySelector('.file-input');
+        const fileLabel = document.querySelector('.file-label');
+        const fileSpan = fileLabel.querySelector('span');
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileSpan.textContent = fileName;
+                fileLabel.classList.add('attached');
+            } else {
+                fileSpan.textContent = 'Прикрепить файл:';
+                fileLabel.classList.remove('attached');
+            }
+        });
+
+        //установить атрибут выключено на кнопку отправки формы
+        document.querySelectorAll('.modal-submit').forEach(element => {
+            element.classList.contains('disabled') ? element.setAttribute('disabled', '') : element.removeAttribute('disabled');
+        });
+        document.querySelectorAll('input[type="email"]').forEach(emailInput => {
+            emailInput.addEventListener('change', function () {
+                if (this.value.trim() !== '') {
+                    const form = this.closest('form');
+                    if (form) {
+                        const submitButton = form.querySelector('.modal-submit');
+                        if (submitButton) {
+                            submitButton.classList.remove('disabled');
+                            submitButton.removeAttribute('disabled');
+                        }
+                    }
+                }
+            });
+        });
+
+        // бургер
+        const burger = document.querySelector('.burger');
+
+        burger.addEventListener('click', function () {
+            if (!this.classList.contains('active')) {
+                // Начинаем со сведения полосок
+                this.classList.add('active');
+                setTimeout(() => {
+                    // Добавляем финальное состояние крестика
+                    this.classList.add('cross');
+                }, 200); // Длительность совпадает с CSS transition
+            } else {
+                // Возвращаемся в изначальное состояние
+                this.classList.remove('cross');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 200); // Длительность совпадает с CSS transition
+            }
+        });
+
+        // для определения скролла для css
+        const body = document.body;
+        const inner = document.querySelector('.container'); // или другой элемент, в котором нужно вычислить ширину
+        const scrollBarWidth = window.innerWidth - body.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
+
+
+    </script>
+</body>
+
+</html>

@@ -338,3 +338,9 @@ body:has(.burger.active) {
         }
     }
 }
+.header.--small{
+    & .header_inner{
+        padding-top: var(--size30);
+        padding-bottom: 5.6vw;
+    }
+}

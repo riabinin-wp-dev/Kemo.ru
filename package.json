@@ -43,6 +43,7 @@
         "gulp-sourcemaps": "^3.0.0",
         "gulp-ttf-to-woff": "^1.0.3",
         "gulp-webp": "^4.0.1",
-        "just-validate": "^4.3.0"
+        "just-validate": "^4.3.0",
+        "swiper": "^11.1.15"
     }
 }
