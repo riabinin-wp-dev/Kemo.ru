@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Useful meta tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <!-- <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <title></title>
+    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    
+</head>
+
+<body>
+    <div class="page">
+        <header class="section header --main" style="background-image: url(./assets/images/main-banner/Airbrush-Image-Enhancer.png);">
+            <div class="container">
+                <div class="header_inner">
+                    <a href="/" class="header_logo">
+                        <img src="./assets/images/header/logo.svg" alt="logo" width="99" height="84">
+                    </a>
+                    <a href="javascript:void(0);" class="header_link" onclick="openModal()">Заказать проект</a>
+                </div>
+                <div class="header_mobile">
+                    <a href="" class="mobile_logo">
+                        <img src="./assets/images/header/Mobile_logo.svg" alt="logo" width="93" height="52">
+                    </a>
+                    <div class="burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                </div>
+                <div class="header_inner_bootom">
+                    <sidebar class="header_sidebar --main">
+                         <nav>
+                             <ul class="header_menu list-reset">
+                                 <li class="current-menu-item"><a href="">Проекты</a></li>
+                                 <li><a href="/Kemo.ru/dist/archive-clients.html">Клиенты</a></li>
+                                 <li><a href="">Контакты</a></li>
+                             </ul>
+                         </nav>
+                    </sidebar>
+                    <div class="header_content">
+                        <h1>The fate of civilization <br> 
+                            is in your hands</h1>
+                            <p>But you can save the world by <br> ordering a project from us!</p>
+                    </div>
+                </div>
+                <div class="header_menu_mobile" style="background-image: url(./assets/images/header/Airbrush-Image-Enhancer.png);">
+                    <nav id="menu_mobile">
+                        <ul class="header_menu--mobile list-reset">
+                            <li class="current-menu-item"><a href="">Проекты</a></li>
+                            <li><a href="">Клиенты</a></li>
+                            <li><a href="">Контакты</a></li>
+                            <li><a href="javascript:void(0);" onclick="openModal()">Заказать проект</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            
+        </main>
+        <footer class="footer section" style="background-image: url(./assets/images/footer/Background.png);">
+            <div class="container container-small">
+                <div class="footer_inner">
+                    <div class="flex-column">
+                        <a href="mailto:office@kemo.ru">office@kemo.ru</a>
+                        <a href="tel:+91234567899">+9 123 456 78 99</a>
+                        <small>© 2005—2020 OOO "KEMO"</small>
+                    </div>
+                    <a href="/" class="footer_inner_logo">
+                        <img src="./assets/images/footer/logo.svg" alt="logo" width="116" height="60" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </footer>        <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+            <div class="modal-window" onclick="event.stopPropagation()">
+                <h2 class="modal_title">Напишите <br> нам</h2>
+                <button class="modal-close" onclick="closeModal(event)">
+                    <img src="./assets/images/modal/close.svg" alt="close" width="20" height="20" loading="lazy">
+                </button>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <span>
+                        <input type="text" class="input_style" id="name" name="name" placeholder="Ваше имя" required>
+                    </span>
+                    <span>
+                        <input type="email" class="input_style" id="email" name="email" placeholder="Почта" required>
+                    </span>
+                    <span>
+                        <input type="tel" class="input_style" id="phone" name="phone" placeholder="Телефон" required>
+                    </span>
+                    <span>
+                        <label for="comment" class="modal_comment">
+                            <textarea id="comment"class="input_style textarea_style"  name="comment" rows="3"></textarea>
+                        </label>
+                    </span>
+                    <span>
+                        <label for="file" class="file-label">
+                            <img src="./assets/images/modal/image76.png" alt="скрепка" width="22" height="20" loading="lazy">
+                            <span>Прикрепить файл:</span>
+                        </label>
+                        <input type="file" id="file" name="file" class="file-input">
+                    </span>
+                    <input type="submit" class="modal-submit disabled" value="Отправить" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="assets/js/app.js"></script> -->
+
+    <script>
+        //скрытие и отображение таксономий
+        function showTaxonomy(e) {
+            const parent = e.closest('[data-taxonomy]'); // Ищем родительский элемент
+            if (parent.classList.contains('active')) {
+                // Закрываем элемент
+                parent.style.maxHeight = null;
+                parent.classList.remove('active');
+            } else {
+                // Открываем элемент
+                parent.style.maxHeight = parent.scrollHeight + 'px';
+                parent.classList.add('active');
+            }
+        }
+        // модальное окно
+        function openModal() {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.add('active');
+            setTimeout(() => {
+                modalOverlay.classList.add('animation');
+            }, 300);
+        }
+
+        function closeModal(event) {
+            const modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.classList.remove('animation');
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+            }, 300);
+
+        }
+
+
+        // переключение активных классов таксономий
+        function changeActive(element) {
+            const parent = element.parentNode;
+            parent.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-taxonomy] a').forEach(element => {
+                element.addEventListener('click', (event) => {
+                    event.preventDefault();
+                });
+            });
+        })
+        // псевдоэлемент на техтареа
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.getElementById('comment');
+            const modalComment = textarea.closest('.modal_comment');
+
+            function toggleFilledClass() {
+                if (textarea.value.trim() !== '') {
+                    modalComment.classList.add('filled');
+                } else {
+                    modalComment.classList.remove('filled');
+                }
+            }
+            toggleFilledClass();
+            textarea.addEventListener('input', toggleFilledClass);
+        });
+
+        //прикрепление файлов - вывод данных о файле
+        const fileInput = document.querySelector('.file-input');
+        const fileLabel = document.querySelector('.file-label');
+        const fileSpan = fileLabel.querySelector('span');
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileSpan.textContent = fileName;
+                fileLabel.classList.add('attached');
+            } else {
+                fileSpan.textContent = 'Прикрепить файл:';
+                fileLabel.classList.remove('attached');
+            }
+        });
+
+        //установить атрибут выключено на кнопку отправки формы
+        document.querySelectorAll('.modal-submit').forEach(element => {
+            element.classList.contains('disabled') ? element.setAttribute('disabled', '') : element.removeAttribute('disabled');
+        });
+        document.querySelectorAll('input[type="email"]').forEach(emailInput => {
+            emailInput.addEventListener('change', function () {
+                if (this.value.trim() !== '') {
+                    const form = this.closest('form');
+                    if (form) {
+                        const submitButton = form.querySelector('.modal-submit');
+                        if (submitButton) {
+                            submitButton.classList.remove('disabled');
+                            submitButton.removeAttribute('disabled');
+                        }
+                    }
+                }
+            });
+        });
+
+        // бургер
+        const burger = document.querySelector('.burger');
+
+        burger.addEventListener('click', function () {
+            if (!this.classList.contains('active')) {
+                // Начинаем со сведения полосок
+                this.classList.add('active');
+                setTimeout(() => {
+                    // Добавляем финальное состояние крестика
+                    this.classList.add('cross');
+                }, 200); // Длительность совпадает с CSS transition
+            } else {
+                // Возвращаемся в изначальное состояние
+                this.classList.remove('cross');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 200); // Длительность совпадает с CSS transition
+            }
+        });
+
+        // для определения скролла для css
+        const body = document.body;
+        const inner = document.querySelector('.container'); // или другой элемент, в котором нужно вычислить ширину
+        const scrollBarWidth = window.innerWidth - body.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+.clients_item{
+    & .project_title{
+        margin-bottom: var(--size40);
+        font-size: var(--size68);
+
+        @include mobile{
+            font-size: var(--size52);
+        }
+    }
+
+    & .grid-row{
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--size20);
+
+        @include mobile{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+    }
+
+    &:nth-child(2){
+        max-width: var(--main-content);
+    }
+}
+.clients{
+    padding-bottom: var(--size80);
+}
+
+.clients_link{
+    display: block;
+    height: var(--size150);
+    background-color: white;
+    border-radius: var(--size25);
+    box-shadow: 0 0.3vw var(--size40) 0 rgba(37, 25, 53, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile{
+        flex: 1 0 calc(50% - 12px);
+        height: 121px;
+        max-width: calc(50% - 12px);
+    }
+
+    & img{
+        object-fit: contain ;
+        // width: 100%;
+        width: var(--size200);
+        height: var(--size52);
+
+        @include mobile{
+            width: 100%;
+            max-width: 110px;
+            max-height: 40px;
+        }
+    }
+}
