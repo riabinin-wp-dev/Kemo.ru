@@ -71,7 +71,9 @@
             background: #fff;
             border-radius: 25px;
             padding: 15px 10px;
-            max-width: max-content;
+            display: flex;
+            justify-content: center;
+            // max-width: max-content;
 
             & img{
                 max-width: 300px;

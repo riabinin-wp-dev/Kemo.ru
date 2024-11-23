@@ -82,6 +82,19 @@ a {
   background: transparent;
   position: relative;
 
+  &.--light{
+
+    &::after{
+      background: #8b86cd;
+    }
+
+    @media (hover:hover) {
+      &:hover{
+        color: black;
+      }
+    }
+  }
+
   @include mobile {
     margin: 38px auto;
     border-radius: 99px;
@@ -158,5 +171,11 @@ a {
 
   @include mobile {
     display: none;
+  }
+}
+
+.tc{
+  @include mobile{
+    text-align: center;
   }
 }
