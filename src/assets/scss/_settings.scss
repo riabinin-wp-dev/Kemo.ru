@@ -122,6 +122,10 @@ a {
     position: sticky;
     top: var(--size30);
   }
+
+  @include mobile{
+    display: block;
+  }
 }
 
 .header_sidebar_back {

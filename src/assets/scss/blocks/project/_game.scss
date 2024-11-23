@@ -1,16 +1,31 @@
 .game_right {
     max-width: var(--main-content);
 
+    @include mobile{
+        max: width 100%;
+    }
+
     & .grid-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--size30);
         margin-top: var(--size35);
+
+        @include mobile{
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+            gap: var(--size25);
+        }
     }
 }
 
 .game_left {
     padding-bottom: var(--size52);
+
+    @include mobile{
+        display: none;
+    }
 }
 
 .game_right_item {
@@ -24,6 +39,11 @@
         height: 21.6vw;
         border-radius: var(--size25);
         overflow: hidden;
+
+        @include mobile{
+            width: 100%;
+            height: auto;
+        }
     }
 
     & span {
@@ -33,6 +53,11 @@
         color: #000;
         display: block;
         margin-bottom: var(--size25);
+
+        @include mobile{
+            margin-bottom: var(--size22);
+            font-size: var(--size15);
+        }
     }
 
     & p {
@@ -42,6 +67,10 @@
         color: #000;
         margin: 0;
         margin-bottom: 36px;
+
+        @include mobile{
+            font-size: var(--size18);
+        }
     }
 }
 
@@ -52,6 +81,11 @@
     color: #000;
     margin: 0;
     margin-bottom: var(--size12);
+
+    @include mobile{
+        font-size: 28px;
+        margin-bottom: var(--size22);
+    }
 }
 
 .game_right_play {
@@ -76,17 +110,38 @@
             border-color: #8b86cd;
         }
     }
+
+    @include mobile{
+        max-width: none;
+        justify-content: center;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
 }
 
 .swiper-game {
     margin-top: var(--size52);
     margin-bottom: var(--size40);
     padding-bottom: var(--size40) !important;
+    
+    @include mobile{
+        margin-top: 33px;
+        padding-bottom: 60px !important;
+        margin-bottom: 35px;
+        margin-right: -10px !important;
+    }
 
     & .swiper-slide img {
         width: var(--size200);
         height: var(--size120);
         border-radius: var(--size15);
+
+        @include mobile{
+            width: 100%;
+            max-width: 80vw;
+            height: auto;
+            display: block;
+        }
     }
 
     & .swiper-pagination-bullet {
@@ -106,10 +161,18 @@
     margin-bottom: var(--size50);
     background: rgba(225, 225, 225, 0.78);
     border-radius: var(--size25);
+
+    @include mobile{
+        grid-template-columns: 1fr;
+    }
 }
 
 .game_tasks_item {
     padding: var(--size52) var(--size64);
+
+    @include mobile{
+        padding: 33px 26px;
+    }
 
     &:first-child {
         position: relative;
@@ -124,6 +187,21 @@
             z-index: 1;
             content: '';
             background-color: #9c9c9c;
+
+            @include mobile{
+                height: 1px;
+                width: 90%;
+                transform: translateX(-50%);
+                left: 50%;
+                top: 100%;
+                right: unset;
+
+            }
+        }
+    }
+    &:last-child{
+        & p{
+            line-height: 168%;
         }
     }
 
@@ -132,6 +210,7 @@
         font-size: var(--size16);
         line-height: 124%;
         color: #000;
+        margin: 0;
     }
 }
 
@@ -143,12 +222,20 @@
     line-height: 115%;
     color: #000;
     margin-bottom: var(--size30);
+
+    @include mobile{
+        margin-bottom: 15px;
+    }
 }
 
 .similar {
     & .game_title {
         margin-bottom: var(--size22);
         margin-left: var(--size20);
+
+        @include mobile{
+            margin-left: 0;
+        }
     }
 
     & .similar_content {
@@ -165,11 +252,39 @@
                 border-radius: var(--size15);
             }
         }
+        @include mobile{
+            display: none;
+        }
     }
 
     & .load_more {
         margin-top: 0;
         margin-bottom: var(--size46);
+        @include mobile{
+            display: none;
+        }
+    }
+}
+.swiper-mobile{
+    display: none !important;
+    margin-top: 20px;
+    margin-bottom: 45px;
+    margin-right: -10px !important;
+
+    & .swiper-slide img {
+        border-radius: var(--size15);
+
+        @include mobile{
+            width: 100%;
+            max-width: 80vw;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+    }
+
+    @include mobile{
+        display: block !important;
     }
 }
 
@@ -180,11 +295,30 @@
         display: flex;
         align-items: center;
         gap: 0.3vw;
+
+        & img{
+            max-width: var(--size150);
+            max-height: var(--size64);
+            object-fit: contain;
+        }
+
+        @include mobile{
+            margin-left: 0;
+
+            & img{
+                max-width: 130px;
+                max-height: 54px;
+            }
+        }
     }
 
     & .load_more {
         margin-top: 0;
         margin-bottom: var(--size52);
+
+        @include mobile{
+            display: none;
+        }
     }
 }
 
@@ -192,6 +326,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--size10);
+
+    @include mobile{
+        display: none;
+    }
 
     & a {
         margin-bottom: var(--size40);

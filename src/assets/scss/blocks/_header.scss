@@ -339,6 +339,10 @@ body:has(.burger.active) {
     }
 }
 .header.--small{
+    @include mobile{
+        background-image: none !important;
+    }
+
     & .header_inner{
         padding-top: var(--size30);
         padding-bottom: 5.6vw;

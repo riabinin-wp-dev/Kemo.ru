@@ -52,3 +52,42 @@
   --size405: 28.93vw;
   --size434: 31vw;
 }
+
+
+@media (max-width: 576px) {
+  :root {
+    // --sidebar-width: 14.4vw;
+    // --sidebar-gap: 8.9vw;
+    --main-content: 100%;
+    --size6: 6px;
+    --size8: 8px;
+    --size10: 10px;
+    --size12: 12px;
+    --size15: 15px;
+    --size16: 16px;
+    --size18: 18px;
+    --size20: 20px;
+    --size22: 22px;
+    --size25: 25px;
+    --size28: 28px;
+    --size30: 30px;
+    --size32: 32px;
+    --size35: 35px;
+    --size40: 40px;
+    --size42: 42px;
+    --size46: 46px;
+    --size50: 50px;
+    --size52: 52px;
+    --size64: 64px;
+    --size68: 68px;
+    --size80: 80px;
+    --size99: 99px;
+    --size114: 114px;
+    --size120: 120px;
+    --size150: 150px;
+    --size200: 200px;
+    --size358: 358px;
+    --size405: 405px;
+    --size434: 434px;
+  }
+}

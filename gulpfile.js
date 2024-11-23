@@ -20,9 +20,10 @@ const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
 const ttfToWoff = require("gulp-ttf-to-woff");
 const svgSprite = require('gulp-svg-sprite');
-const webp = require('gulp-webp');
+// const webp = require('gulp-webp');
 const avif = require('gulp-avif');
 const newer = require('gulp-newer');
+const merge = require('merge-stream');
 // const newer = require("gulp-newer");
 
 /* Paths */
@@ -35,7 +36,8 @@ const path = {
         js: distPath + "assets/js/",
         css: distPath + "assets/css/",
         images: distPath + "assets/images/",
-        fonts: distPath + "assets/fonts/"
+        fonts: distPath + "assets/fonts/",
+        video: distPath + "assets/video",
     },
     src: {
         html: srcPath + "*.html",
@@ -44,7 +46,8 @@ const path = {
         images: srcPath + "assets/images/**/*.{jpg,png,gif,ico,webp,webmanifest,xml,json,svg}",
         imagesnosvg: srcPath + ['assets/images/**/*.{jpg,png,gif,ico,webp,webmanifest,xml,json,svg}', "!assets/images/**/!(svg)"],
         imagessvg: srcPath + "assets/images/**/*.svg",
-        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}",
+        video: srcPath + "assets/video/*.{mp4,webm}",
     },
     watch: {
         html: srcPath + "**/*.html",
@@ -53,11 +56,11 @@ const path = {
         images: srcPath + "assets/images/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json,svg}",
         imagessvg: distPath + "assets/images/**/*.svg",
         imagesnosvg: srcPath + ['assets/images/**/*.{jpg,png,gif,ico,webp,webmanifest,xml,json,svg}', "!assets/images/**/!(svg)"],
-        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}",
+        video: srcPath + "assets/video/*.{mp4,webm}",
     },
     clean: "./" + distPath
 }
-
 
 /* Tasks */
 
@@ -105,8 +108,6 @@ function css(cb) {
         .pipe(autoprefixer({
             cascade: true
         }))
-        // .pipe(cssbeautify())
-        // .pipe(dest(path.build.css))
         .pipe(cssnano({
             zindex: false,
             discardComments: {
@@ -162,29 +163,16 @@ function js(cb) {
                 this.emit('end');
             }
         }))
-        //.pipe(webpack(require('./webpack.config.js')))
         .pipe(webpackStream({
             mode: "production",
             entry: {
                 app: './src/assets/js/app.js',
-                // main: './src/assets/js/main.js',
-                 //knowledge: './src/assets/js/knowledge.js',
-                 //single: './src/assets/js/single.js',
-                 //servers: './src/assets/js/servers.js',
-                 //hosting: './src/assets/js/hosting.js',
-                 //about: './src/assets/js/about.js',
-                 //reselling: './src/assets/js/reselling.js',
-                 //modal: './src/assets/js/modal.js',
             },
             output: {
                 filename: '[name].js',
             },
         }))
         .pipe(uglify())
-        // .pipe(rename({
-        //     suffix: ".min",
-        //     extname: ".js"
-        // }))
         .pipe(dest(path.build.js))
         .pipe(browserSync.reload({ stream: true }));
 
@@ -204,19 +192,10 @@ function jsWatch(cb) {
                 this.emit('end');
             }
         }))
-        //.pipe(webpack(require('./webpack.config.js')))
         .pipe(webpackStream({
             mode: "production",
             entry: {
                 app: './src/assets/js/app.js',
-                 //main: './src/assets/js/main.js',
-                 //knowledge: './src/assets/js/knowledge.js',
-                 //single: './src/assets/js/single.js',
-                 //servers: './src/assets/js/servers.js',
-                 //hosting: './src/assets/js/hosting.js',
-                 //about: './src/assets/js/about.js',
-                 //reselling: './src/assets/js/reselling.js',
-                 //modal: './src/assets/js/modal.js',
             },
             output: {
                 filename: '[name].js',
@@ -230,28 +209,34 @@ function jsWatch(cb) {
 }
 
 function images(cb) {
-    return src(path.src.imagesnosvg)
-        .pipe(newer(path.build.images))
-        .pipe(avif({ quality: 90 }))
-        
-        .pipe(src(path.src.images))
-        .pipe(newer(path.build.images))
-        .pipe(webp())
-        
-        .pipe(src(path.src.images))
-        .pipe(newer(path.build.images))
+    // Конвертация в AVIF
+    const avifTask =  src(path.src.imagesnosvg)
+        .pipe(newer(path.build.images)) // Проверка на обновление
+        .pipe(avif({ quality: 70 })) // Конвертация в AVIF
+        .pipe(dest(path.build.images)); // Сохранение в папку назначения
+
+    // Оптимизация изображений (остальные форматы)
+    const imageminTask = src(path.src.images)
+        .pipe(newer(path.build.images)) // Проверка на обновление
         .pipe(imagemin({
             interlaced: true,
             progressive: true,
             optimizationLevel: 1,
             svgoPlugins: [
-                {
-                    removeViewBox: true
-                }
+                { removeViewBox: true }
             ]
         }))
-        .pipe(dest(path.build.images))
-        .pipe(browserSync.reload({ stream: true }));
+        .pipe(dest(path.build.images)) // Сохранение
+        .pipe(browserSync.reload({ stream: true })); // Обновление браузера
+
+    return merge(avifTask, imageminTask);
+}
+
+
+function video (cb){
+    return src(path.src.video)
+    .pipe(dest(path.build.video))
+    .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
@@ -295,9 +280,10 @@ function watchFiles() {
     gulp.watch([path.watch.images], images);
     gulp.watch([path.watch.fonts], fonts);
     gulp.watch([path.watch.images], sprite);
+    gulp.watch([path.watch.video], video);
 }
 
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts ,  sprite));
+const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts ,video , sprite));
 const watch = gulp.parallel(build, watchFiles, serve);
 
 
@@ -307,6 +293,7 @@ exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.images = images;
+exports.video = video;
 exports.fonts = fonts;
 exports.clean = clean;
 exports.build = build;
