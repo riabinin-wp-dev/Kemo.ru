@@ -142,6 +142,38 @@
         const scrollBarWidth = window.innerWidth - body.clientWidth;
         document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
 
+        // окно спасибо
+        function handleModalAnimation() {
+            const modalTitle = document.querySelector('.modal_title');
+            const modalClose = document.querySelector('.modal-close');
+            const modalThanks = document.querySelector('.modal_thanks');
+
+            if (modalTitle && modalClose && modalThanks) {
+                // Плавное скрытие modal_title
+                modalTitle.style.opacity = 0;
+                modalTitle.style.marginTop = '-100%';
+                setTimeout(() => {
+                    modalTitle.style.display = 'none';
+                }, 300);
+
+                // Плавное скрытие следующего элемента за modal-close
+                const nextElement = modalClose.nextElementSibling;
+                if (nextElement) {
+                    nextElement.style.opacity = 0;
+                    nextElement.style.marginTop = '-100%';
+                    setTimeout(() => {
+                        nextElement.style.display = 'none';
+                    }, 300);
+                }
+
+                // Плавное появление modal_thanks
+                setTimeout(() => {
+                    modalThanks.style.opacity = 1;
+                    modalThanks.style.height = 'auto'; // Высота адаптируется к содержимому
+                }, 300); // Задержка для синхронизации с завершением скрытия
+            }
+        }
+
 
     </script>
 </body>
