@@ -119,6 +119,28 @@
     }
 }
 
+.game_wrapper{
+    position: relative;
+        & .swiper_arrow{
+        top: calc(50% - var(--size20));
+        &::after{
+            font-size: 1.6vw;
+            color: #8b86cd;
+        }
+
+        @include mobile{
+            display: none;
+        }
+
+        &.swiper-game-next{
+            right: -3.2vw;
+        }
+        &.swiper-game-prev{
+            left: -3.2vw;
+        }
+    }
+}
+
 .swiper-game {
     margin-top: var(--size52);
     margin-bottom: var(--size40);

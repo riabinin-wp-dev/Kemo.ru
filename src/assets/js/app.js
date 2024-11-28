@@ -1,13 +1,17 @@
 import Swiper from "swiper";
-import { Pagination } from "swiper/modules";
+import { Pagination,Navigation } from "swiper/modules";
 
 const swiper = new Swiper('.swiper-game', {
   slidesPerView: 4, // Количество видимых слайдов по умолчанию
   spaceBetween: 10, // Расстояние между слайдами
-  modules: [Pagination],
+  modules: [Pagination,Navigation],
   pagination: {
     el: '.swiper-pagination',
     clickable: true, // Дает возможность кликать по точкам
+  },
+  navigation:{
+    nextEl: '.swiper-game-next',
+    prevEl: '.swiper-game-prev',
   },
   breakpoints: {
     100: {

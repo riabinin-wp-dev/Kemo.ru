@@ -38,6 +38,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s linear;
+
+    @media (hover:hover){
+        &:hover{
+            transform: translateY(-.3vw);
+        }
+    }
 
     @include mobile {
         flex: 1 0 calc(50% - 12px);
