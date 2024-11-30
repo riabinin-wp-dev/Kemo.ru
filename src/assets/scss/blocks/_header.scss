@@ -218,6 +218,25 @@
     }
 }
 
+.header_sidebar.--main nav {
+    max-width: var(--sidebar-width);
+    // position: absolute; /* Изначально навигация позиционируется относительно родителя */
+    transition: top 0.3s ease; /* Плавность при изменении позиции */
+  }
+  
+  .header_sidebar.--main nav.fixed {
+    position: fixed; /* Фиксированное положение навигации */
+  }
+  
+//   .header_sidebar.--main nav.at-bottom {
+//     position: absolute; /* Для фиксации у нижнего края */
+//     top: auto;
+//     bottom: 0;
+//   }
+  
+  
+  
+
 .header_inner_bootom {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;

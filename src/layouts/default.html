@@ -173,6 +173,45 @@
                 }, 300); // Задержка для синхронизации с завершением скрытия
             }
         }
+        //фиксация сайдюара
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarNav = document.querySelector('.header_sidebar.--main nav');
+            const projectEnd = document.querySelector('.project_content_small');
+
+            // Получаем координаты и размеры
+            const sidebarNavInitialOffset = sidebarNav.getBoundingClientRect().top + window.pageYOffset;
+            const sidebarNavLeftOffset = sidebarNav.getBoundingClientRect().left;
+            const sidebarNavHeight = sidebarNav.offsetHeight;
+            const projectEndOffset = projectEnd.offsetTop + projectEnd.offsetHeight; // Нижняя граница project_content_small
+            const fixTriggerHeight = window.innerHeight / 2; // Высота фиксации (50% от экрана)
+
+            window.addEventListener('scroll', function () {
+                const scrollY = window.scrollY;
+
+                // Если скроллим вниз, но не дошли до конца project_content_small
+                if (scrollY + fixTriggerHeight < projectEndOffset - sidebarNavHeight && scrollY + fixTriggerHeight > sidebarNavInitialOffset) {
+                    // Фиксация в центре экрана
+                    sidebarNav.style.position = 'fixed';
+                    sidebarNav.style.top = `${fixTriggerHeight}px`;
+                    sidebarNav.style.left = `${sidebarNavLeftOffset}px`;
+                }
+                // Если достигли project_content_small
+                else if (scrollY + fixTriggerHeight >= projectEndOffset - sidebarNavHeight) {
+                    // Фиксация в позиции у project_content_small
+                    sidebarNav.style.position = 'fixed';
+                    sidebarNav.style.top = `${projectEndOffset - sidebarNavHeight - scrollY}px`; // Останавливаем позицию
+                    sidebarNav.style.left = `${sidebarNavLeftOffset}px`;
+                }
+                // Если возвращаемся вверх
+                else {
+                    // Возвращаем в исходное положение
+                    sidebarNav.style.position = '';
+                    sidebarNav.style.top = '';
+                    sidebarNav.style.left = '';
+                }
+            });
+        });
+
 
 
     </script>

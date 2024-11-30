@@ -156,7 +156,7 @@ a {
   border: 0.2vw solid rgba(78, 70, 166, 0.8);
   border-radius: var(--size99);
   padding: var(--size15) var(--size28);
-  margin-bottom: 24vw;
+  margin-bottom: clamp(3vw, calc(75dvh - 25vw), 20vw);
   max-width: max-content;
 
   & img {
@@ -167,7 +167,7 @@ a {
 }
 
 .--sidebar_left {
-  padding-bottom: var(--size52);
+  // padding-bottom: var(--size52);
 
   @include mobile {
     display: none;

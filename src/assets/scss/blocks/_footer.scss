@@ -1,5 +1,6 @@
 .footer {
     padding: var(--size42) 0 var(--size30);
+    background-color: #161843;
 
     @include mobile{
         padding-top: 38px;
