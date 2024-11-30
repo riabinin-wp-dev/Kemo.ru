@@ -150,7 +150,8 @@
 }
 
 .header_sidebar.--main {
-    padding-top: 26vw;
+    // padding-top: 26vw;
+    padding-top: clamp(10vw, calc(75dvh - 25vw), 20vw);
 
     @include mobile {
         display: none;

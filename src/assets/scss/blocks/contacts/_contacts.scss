@@ -49,6 +49,8 @@
         padding-right: var(--size30);
         max-width: none;
         font-weight: 400;
+        background-color: var(--accent-light-color);
+        text-wrap: balance;
 
         @include mobile{
             padding-top: 10px !important;
